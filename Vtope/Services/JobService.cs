@@ -13,6 +13,7 @@ namespace Vtope.Services
 
         public async Task PrepareAccount(InstaAccount account)
         {
+            // TODO change all bytes array to singleton for example
             var bytesAva = await File.ReadAllBytesAsync(@"../Files/ava.jpg");
 
             var bytesList = new List<byte[]>
@@ -38,7 +39,7 @@ namespace Vtope.Services
             }
         }
 
-        public async Task PrepareAccount(InstaAccount account, string usernameToFollow)
+        public async Task FollowAccount(InstaAccount account, string usernameToFollow)
         {
             await _instaService.Login(account.SessionData);
             var id = await _instaService.GetUserIdBy(usernameToFollow);
