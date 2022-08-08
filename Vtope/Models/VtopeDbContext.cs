@@ -11,6 +11,8 @@ public class VtopeDbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        modelBuilder.Entity<InstaAccount>().HasIndex(x => x.Username).IsUnique();
+        modelBuilder.Entity<InstaAccount>().Property(x => x.Username).IsRequired();
     }
 
     public DbSet<InstaAccount> InstaAccounts { get; set; }
