@@ -20,6 +20,7 @@ builder.Services.AddHangfire(configuration => configuration
 
 builder.Services.AddHangfireServer(x => x.WorkerCount = 1);
 
+builder.Services.AddScoped<IJobService, JobService>();
 builder.Services.AddScoped<IInstaService, InstaService>();
 
 builder.Services.AddAuthentication(OpenIdConnectDefaults.AuthenticationScheme)

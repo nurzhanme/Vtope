@@ -9,7 +9,10 @@ namespace Vtope.Services;
 public class InstaService : IInstaService
 {
     private IInstaApi? _instaApi;
-
+    List<string> bios = new()
+    {
+        "Live", "Life", "Love", "Hot", "Top"
+    };
     public async Task<string> Login(string username, string password)
     {
 
@@ -45,32 +48,12 @@ public class InstaService : IInstaService
         if (!_instaApi.IsUserAuthenticated) throw new InstaException("Not Authorized");
     }
 
-    public async Task<string> PostPhoto(string imageUrl, string caption)
-    {
-        if (string.IsNullOrWhiteSpace(imageUrl))
-        {
-            throw new ArgumentException($"{nameof(imageUrl)} is null or empty", nameof(imageUrl));
-        }
-            
-        var image = new InstaImageUpload(imageUrl);
-
-        var result = await _instaApi.MediaProcessor.UploadPhotoAsync(image, caption);
-
-        if (!result.Succeeded)
-        {
-            throw new InstaException(result.Info.Message);
-        }
-
-        return result.Value.Pk;
-
-    }
-
-    public async Task<string> PostPhoto(byte[] imageBytes, string caption)
+    public async Task<string> PostPhoto(byte[] imageBytes)
     {
 
         var image = new InstaImageUpload { ImageBytes = imageBytes };
 
-        var result = await _instaApi.MediaProcessor.UploadPhotoAsync(image, caption);
+        var result = await _instaApi.MediaProcessor.UploadPhotoAsync(image, GetRandomMessage());
 
         if (!result.Succeeded)
         {
@@ -106,19 +89,30 @@ public class InstaService : IInstaService
         }
     }
 
-    public async Task SetBio(string mediaId)
+    public async Task SetBio()
     {
-        var bios = new List<string>
-        {
-            "Live", "Life", "Love", "Hot", "Top"
-        };
-
-        var r = new Random().Next(bios.Count);
-
-        var result = await _instaApi.AccountProcessor.SetBiographyAsync(bios[r]);
+        var result = await _instaApi.AccountProcessor.SetBiographyAsync(GetRandomMessage());
         if (!result.Succeeded)
         {
             throw new InstaException(result.Info.Message);
         }
+    }
+
+    public async Task<long> GetUserIdBy(string username)
+    {
+        var result = await _instaApi.UserProcessor.GetUserInfoByUsernameAsync(username);
+
+        if (!result.Succeeded)
+        {
+            throw new InstaException(result.Info.Message);
+        }
+
+        return result.Value.Pk;
+    }
+
+    private string GetRandomMessage()
+    {
+        var r = new Random().Next(bios.Count);
+        return bios[r];
     }
 }
