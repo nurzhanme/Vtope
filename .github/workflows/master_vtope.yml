@@ -47,6 +47,18 @@ jobs:
         with:
           name: .net-app
 
+      #substitute production appsettings entries to appsettings json file
+      - name: App Settings Variable Substitution
+        uses: microsoft/variable-substitution@v1
+        with:
+          files: '**/appsettings.json'
+        env:
+          ConnectionStrings.VtopeDbConnection: ${{ secrets.CONNECTION_STRING }}
+          ConnectionStrings.VtopeHangfireDbConnection: ${{ secrets.CONNECTION_STRING_HANGFIRE }}
+          AzureAd.Domain: ${{ secrets.AZURE_AD_DOMAIN }}
+          AzureAd.TenantId: ${{ secrets.AZURE_AD_TENANT_ID }}
+          AzureAd.ClientId: ${{ secrets.AZURE_AD_CLIENT_ID }}
+
       - name: Deploy to Azure Web App
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v2
