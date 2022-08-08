@@ -2,20 +2,24 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Hangfire;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Vtope.Models;
+using Vtope.Services;
 
 namespace Vtope.Controllers
 {
     public class InstaAccountsController : Controller
     {
         private readonly VtopeDbContext _context;
-
-        public InstaAccountsController(VtopeDbContext context)
+        private readonly IInstaService _instaService;
+        
+        public InstaAccountsController(VtopeDbContext context, IInstaService instaService)
         {
-            _context = context;
+            _context = context ?? throw new ArgumentNullException(nameof(context));
+            _instaService = instaService ?? throw new ArgumentNullException(nameof(instaService));
         }
 
         // GET: InstaAccounts
@@ -61,6 +65,27 @@ namespace Vtope.Controllers
             {
                 _context.Add(instaAccount);
                 await _context.SaveChangesAsync();
+                
+                //TODO change to domain event
+                var sessionData = await _instaService.Login(instaAccount.Username, instaAccount.Password);
+                if (!string.IsNullOrWhiteSpace(sessionData))
+                {
+                    instaAccount.SessionData = sessionData;
+                    await _context.SaveChangesAsync();
+                }
+
+                //TODO change to domain event
+                if (!instaAccount.IsUtil)
+                {
+                    BackgroundJob.Enqueue<IJobService>(x => x.PrepareAccount(instaAccount));
+
+                    var utilAccounts = await _context.InstaAccounts.Where(x => x.IsUtil).Take(15).AsNoTracking().ToListAsync();
+                    foreach (var utilAccount in utilAccounts)
+                    {
+                        BackgroundJob.Enqueue<IJobService>(x => x.FollowAccount(utilAccount, instaAccount.Username));
+                    }
+                }
+
                 return RedirectToAction(nameof(Index));
             }
             return View(instaAccount);
