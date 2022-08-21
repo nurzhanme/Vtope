@@ -1,4 +1,5 @@
-﻿using Vtope.Models;
+﻿using Vtope.Domain;
+using Vtope.Models;
 
 namespace Vtope.Services;
 

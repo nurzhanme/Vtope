@@ -1,4 +1,4 @@
-﻿namespace Vtope.Models
+﻿namespace Vtope.Domain
 {
     public class InstaAccount
     {

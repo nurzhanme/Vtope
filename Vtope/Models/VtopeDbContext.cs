@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Vtope.Domain;
 
 namespace Vtope.Models;
 

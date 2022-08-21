@@ -25,6 +25,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Vtope.Domain\Vtope.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Update="Files\01.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

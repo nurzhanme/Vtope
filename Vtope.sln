@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.2.32630.192
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vtope", "Vtope\Vtope.csproj", "{0FF8509D-D264-4DE1-8065-D8B5E29083AB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vtope", "Vtope\Vtope.csproj", "{0FF8509D-D264-4DE1-8065-D8B5E29083AB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vtope.Domain", "Vtope.Domain\Vtope.Domain.csproj", "{CA627E4D-176A-4DD7-B18C-6FD76698326A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{0FF8509D-D264-4DE1-8065-D8B5E29083AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0FF8509D-D264-4DE1-8065-D8B5E29083AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0FF8509D-D264-4DE1-8065-D8B5E29083AB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CA627E4D-176A-4DD7-B18C-6FD76698326A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CA627E4D-176A-4DD7-B18C-6FD76698326A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CA627E4D-176A-4DD7-B18C-6FD76698326A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CA627E4D-176A-4DD7-B18C-6FD76698326A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
