@@ -11,7 +11,7 @@ using Vtope.Models;
 namespace Vtope.Migrations
 {
     [DbContext(typeof(VtopeDbContext))]
-    [Migration("20220808223612_Init")]
+    [Migration("20230105062453_Init")]
     partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -23,7 +23,7 @@ namespace Vtope.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("Vtope.Models.InstaAccount", b =>
+            modelBuilder.Entity("Vtope.Domain.InstaAccount", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -31,16 +31,12 @@ namespace Vtope.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<bool>("IsUtil")
-                        .HasColumnType("boolean");
-
                     b.Property<string>("Password")
                         .IsRequired()
                         .HasMaxLength(30)
                         .HasColumnType("character varying(30)");
 
                     b.Property<string>("SessionData")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("Username")

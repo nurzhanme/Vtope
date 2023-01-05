@@ -21,16 +21,13 @@ namespace Vtope.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("Vtope.Models.InstaAccount", b =>
+            modelBuilder.Entity("Vtope.Domain.InstaAccount", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer");
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
-
-                    b.Property<bool>("IsUtil")
-                        .HasColumnType("boolean");
 
                     b.Property<string>("Password")
                         .IsRequired()

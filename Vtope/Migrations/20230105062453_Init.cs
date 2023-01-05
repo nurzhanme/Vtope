@@ -17,8 +17,7 @@ namespace Vtope.Migrations
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     Username = table.Column<string>(type: "character varying(30)", maxLength: 30, nullable: false),
                     Password = table.Column<string>(type: "character varying(30)", maxLength: 30, nullable: false),
-                    SessionData = table.Column<string>(type: "text", nullable: false),
-                    IsUtil = table.Column<bool>(type: "boolean", nullable: false)
+                    SessionData = table.Column<string>(type: "text", nullable: true)
                 },
                 constraints: table =>
                 {
