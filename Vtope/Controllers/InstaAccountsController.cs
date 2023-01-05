@@ -63,24 +63,24 @@ namespace Vtope.Controllers
                 await _context.SaveChangesAsync();
                 
                 //TODO change to domain event
-                var sessionData = await _instaService.Login(instaAccount.Username, instaAccount.Password);
-                if (!string.IsNullOrWhiteSpace(sessionData))
-                {
-                    instaAccount.SessionData = sessionData;
-                    await _context.SaveChangesAsync();
-                }
+                //var sessionData = await _instaService.Login(instaAccount.Username, instaAccount.Password);
+                //if (!string.IsNullOrWhiteSpace(sessionData))
+                //{
+                //    instaAccount.SessionData = sessionData;
+                //    await _context.SaveChangesAsync();
+                //}
 
-                //TODO change to domain event
-                if (!instaAccount.IsUtil)
-                {
-                    BackgroundJob.Enqueue<IJobService>(x => x.PrepareAccount(instaAccount));
+                ////TODO change to domain event
+                //if (!instaAccount.IsUtil)
+                //{
+                //    BackgroundJob.Enqueue<IJobService>(x => x.PrepareAccount(instaAccount));
 
-                    var utilAccounts = await _context.InstaAccounts.Where(x => x.IsUtil).Take(15).AsNoTracking().ToListAsync();
-                    foreach (var utilAccount in utilAccounts)
-                    {
-                        BackgroundJob.Enqueue<IJobService>(x => x.FollowAccount(utilAccount, instaAccount.Username));
-                    }
-                }
+                //    var utilAccounts = await _context.InstaAccounts.Where(x => x.IsUtil).Take(15).AsNoTracking().ToListAsync();
+                //    foreach (var utilAccount in utilAccounts)
+                //    {
+                //        BackgroundJob.Enqueue<IJobService>(x => x.FollowAccount(utilAccount.SessionData, instaAccount.Username));
+                //    }
+                //}
 
                 return RedirectToAction(nameof(Index));
             }
