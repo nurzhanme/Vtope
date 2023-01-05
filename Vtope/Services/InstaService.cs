@@ -9,7 +9,8 @@ namespace Vtope.Services;
 public class InstaService : IInstaService
 {
     private IInstaApi? _instaApi;
-    List<string> bios = new()
+
+    readonly List<string> _bios = new()
     {
         "Live", "Life", "Love", "Hot", "Top"
     };
@@ -69,16 +70,6 @@ public class InstaService : IInstaService
 
     }
 
-    public async Task Follow(long userId)
-    {
-        var result = await _instaApi.UserProcessor.FollowUserAsync(userId);
-
-        if (!result.Succeeded)
-        {
-            throw new InstaException(result.Info.Message);
-        }
-    }
-
     public async Task ChangeProfilePicture(byte[] imageBytes)
     {
         var result = await _instaApi.AccountProcessor.ChangeProfilePictureAsync(imageBytes);
@@ -98,21 +89,9 @@ public class InstaService : IInstaService
         }
     }
 
-    public async Task<long> GetUserIdBy(string username)
-    {
-        var result = await _instaApi.UserProcessor.GetUserInfoByUsernameAsync(username);
-
-        if (!result.Succeeded)
-        {
-            throw new InstaException(result.Info.Message);
-        }
-
-        return result.Value.Pk;
-    }
-
     private string GetRandomMessage()
     {
-        var r = new Random().Next(bios.Count);
-        return bios[r];
+        var r = new Random().Next(_bios.Count);
+        return _bios[r];
     }
 }

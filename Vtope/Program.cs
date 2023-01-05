@@ -13,25 +13,25 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-builder.Services.AddHangfire(configuration => configuration
-    .UseSimpleAssemblyNameTypeSerializer()
-    .UseRecommendedSerializerSettings()
-    .UsePostgreSqlStorage(builder.Configuration.GetConnectionString("VtopeHangfireDbConnection")));
+//builder.Services.AddHangfire(configuration => configuration
+//    .UseSimpleAssemblyNameTypeSerializer()
+//    .UseRecommendedSerializerSettings()
+//    .UsePostgreSqlStorage(builder.Configuration.GetConnectionString("VtopeHangfireDbConnection")));
 
-builder.Services.AddHangfireServer(x => x.WorkerCount = 1);
+//builder.Services.AddHangfireServer(x => x.WorkerCount = 1);
 
 builder.Services.AddScoped<IJobService, JobService>();
 builder.Services.AddScoped<IInstaService, InstaService>();
 
-builder.Services.AddAuthentication(OpenIdConnectDefaults.AuthenticationScheme)
-    .AddMicrosoftIdentityWebApp(builder.Configuration.GetSection("AzureAd"));
+//builder.Services.AddAuthentication(OpenIdConnectDefaults.AuthenticationScheme)
+//    .AddMicrosoftIdentityWebApp(builder.Configuration.GetSection("AzureAd"));
 
 builder.Services.AddControllersWithViews(options =>
 {
-    var policy = new AuthorizationPolicyBuilder()
-        .RequireAuthenticatedUser()
-        .Build();
-    options.Filters.Add(new AuthorizeFilter(policy));
+    //var policy = new AuthorizationPolicyBuilder()
+    //    .RequireAuthenticatedUser()
+    //    .Build();
+    //options.Filters.Add(new AuthorizeFilter(policy));
 });
 
 builder.Services.AddDbContext<VtopeDbContext>(options =>
@@ -53,11 +53,11 @@ if (!app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
-app.UseHangfireDashboard();
+//app.UseHangfireDashboard();
 
 app.UseRouting();
 
-app.UseAuthentication();
+//app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(
