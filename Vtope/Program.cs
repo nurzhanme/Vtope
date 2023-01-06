@@ -6,8 +6,9 @@ using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Identity.Web;
 using Microsoft.Identity.Web.UI;
+using Vtope.Data;
 using Vtope.Models;
-using Vtope.Services;
+using Vtope.Service;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -34,8 +35,7 @@ builder.Services.AddControllersWithViews(options =>
     //options.Filters.Add(new AuthorizeFilter(policy));
 });
 
-builder.Services.AddDbContext<VtopeDbContext>(options =>
-    options.UseNpgsql(builder.Configuration.GetConnectionString("VtopeDbConnection")));
+builder.Services.AddPersistence(builder.Configuration);
 
 builder.Services.AddRazorPages()
     .AddMicrosoftIdentityUI();

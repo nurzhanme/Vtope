@@ -2,9 +2,9 @@
 using InstagramApiSharp.API.Builder;
 using InstagramApiSharp.Classes;
 using InstagramApiSharp.Classes.Models;
-using Vtope.Exceptions;
+using Vtope.Service.Exceptions;
 
-namespace Vtope.Services;
+namespace Vtope.Service;
 
 public class InstaService : IInstaService
 {

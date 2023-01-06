@@ -1,4 +1,4 @@
-﻿namespace Vtope.Services;
+﻿namespace Vtope.Service;
 
 public interface IInstaService
 {

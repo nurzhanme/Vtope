@@ -5,7 +5,13 @@ VisualStudioVersion = 17.2.32630.192
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vtope", "Vtope\Vtope.csproj", "{0FF8509D-D264-4DE1-8065-D8B5E29083AB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vtope.Domain", "Vtope.Domain\Vtope.Domain.csproj", "{CA627E4D-176A-4DD7-B18C-6FD76698326A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vtope.Domain", "Vtope.Domain\Vtope.Domain.csproj", "{CA627E4D-176A-4DD7-B18C-6FD76698326A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vtope.InstaFunctions", "Vtope.InstaFunctions\Vtope.InstaFunctions.csproj", "{A3615CAD-EE92-4B72-A982-93815345F931}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vtope.Data", "Vtope.Data\Vtope.Data.csproj", "{EF2FCDA9-A4A9-4F29-A0DB-D9C05A98C9BB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vtope.Service", "Vtope.Service\Vtope.Service.csproj", "{DF204960-E672-4BBB-8619-7AC783E8E944}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +27,18 @@ Global
 		{CA627E4D-176A-4DD7-B18C-6FD76698326A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CA627E4D-176A-4DD7-B18C-6FD76698326A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CA627E4D-176A-4DD7-B18C-6FD76698326A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A3615CAD-EE92-4B72-A982-93815345F931}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A3615CAD-EE92-4B72-A982-93815345F931}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A3615CAD-EE92-4B72-A982-93815345F931}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A3615CAD-EE92-4B72-A982-93815345F931}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EF2FCDA9-A4A9-4F29-A0DB-D9C05A98C9BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF2FCDA9-A4A9-4F29-A0DB-D9C05A98C9BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF2FCDA9-A4A9-4F29-A0DB-D9C05A98C9BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF2FCDA9-A4A9-4F29-A0DB-D9C05A98C9BB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DF204960-E672-4BBB-8619-7AC783E8E944}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF204960-E672-4BBB-8619-7AC783E8E944}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF204960-E672-4BBB-8619-7AC783E8E944}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF204960-E672-4BBB-8619-7AC783E8E944}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
