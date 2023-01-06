@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Vtope.Domain;
 using Vtope.Models;
-using Vtope.Services;
+using Vtope.Service;
 
 namespace Vtope.Controllers
 {
